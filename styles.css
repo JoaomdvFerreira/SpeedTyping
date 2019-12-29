@@ -1,0 +1,87 @@
+:root {
+  --main-bg: #343148;
+  --secondary-bg: #ffd662;
+  --main-text: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--main-bg);
+}
+
+body,
+.quote-input {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.timer {
+  position: absolute;
+  top: 2rem;
+  font-size: 5rem;
+  font-weight: bold;
+  color: var(--secondary-bg);
+}
+
+.container {
+  background-color: var(--secondary-bg);
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  max-width: 90%;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.quote-display {
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-size: 1.5rem;
+}
+
+.quote-input {
+  resize: none;
+  width: 100%;
+  height: 8rem;
+  margin: auto;
+  outline: none;
+  background-color: transparent;
+  border: 2px solid black;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+}
+
+.quote-input:focus {
+  border-color: var(--main-bg);
+}
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+  text-decoration: underline;
+}
+
+.refresh-btn {
+  width: 30%;
+  align-self: center;
+  margin-top: 1rem;
+  background-color: var(--main-bg);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  color: var(--secondary-bg);
+  font-size: 1rem;
+  font-weight: bold;
+}
