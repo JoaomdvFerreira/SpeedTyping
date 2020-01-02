@@ -3,6 +3,8 @@ const quoteDisplayElement = document.getElementById("quoteDisplay");
 const quoteInputElement = document.getElementById("quoteInput");
 const refreshBtn = document.getElementById("refreshBtn");
 const timerElement = document.getElementById("timer");
+const tableData = document.querySelector("#scoreBoard > tbody");
+let startTime;
 
 refreshBtn.addEventListener("click", () => {
   renderNewQuote();
@@ -30,9 +32,9 @@ quoteInputElement.addEventListener("input", () => {
   });
 
   if (correct) {
-    // const countCharacteres = arrayQuote.length;
-    // const countTimer = timerElement.innerText;
-    // saveScore(countCharacteres, countTimer);
+    const countCharacteres = arrayQuote.length;
+    const countTimer = timerElement.innerText;
+    saveScore(countCharacteres, countTimer);
     renderNewQuote();
   }
 });
@@ -45,6 +47,17 @@ async function getRandomQuote() {
 
 async function renderNewQuote() {
   const quote = await getRandomQuote();
+  const table = document.querySelector(".score-board");
+  const instructions = document.querySelector("#instructions");
+
+  if (tableData.rows.length > 0) {
+    instructions.style.display = "none";
+    table.style.display = "block";
+  } else {
+    table.style.display = "none";
+    instructions.style.display = "block";
+  }
+
   quoteDisplayElement.innerText = "";
   quote.split("").forEach(character => {
     const characterSpan = document.createElement("span");
@@ -55,7 +68,6 @@ async function renderNewQuote() {
   startTimer();
 }
 
-let startTime;
 function startTimer() {
   timerElement.innerText = 0;
   startTime = new Date();
@@ -68,18 +80,23 @@ function getTimerTime() {
   return Math.floor((new Date() - startTime) / 1000);
 }
 
-// function saveScore(countCharacteres, countTimer) {
-//   const scoreBoard = document.querySelector("#scoreBoard > tbody");
-//   const row = scoreBoard.insertRow();
+function saveScore(countCharacteres, countTimer) {
+  const row = tableData.insertRow();
 
-//   const col1 = row.insertCell();
-//   const col2 = row.insertCell();
+  const col1 = row.insertCell();
+  const col2 = row.insertCell();
 
-//   const txtCC = document.createTextNode(countCharacteres);
-//   const txtCT = document.createTextNode(countTimer);
+  const txtCC = document.createTextNode(countCharacteres);
+  const txtCT = document.createTextNode(countTimer);
 
-//   col1.appendChild(txtCC);
-//   col2.appendChild(txtCT);
-// }
+  const col3 = row.insertCell();
+  const txtWPM = document.createTextNode(
+    ~~(countCharacteres / (countTimer / 60))
+  );
+
+  col1.appendChild(txtCC);
+  col2.appendChild(txtCT);
+  col3.appendChild(txtWPM);
+}
 
 renderNewQuote();

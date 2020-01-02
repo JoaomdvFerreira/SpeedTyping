@@ -24,10 +24,9 @@ body,
 }
 
 .timer {
-  position: absolute;
-  top: 2rem;
   font-size: 5rem;
   font-weight: bold;
+  margin: 2rem;
   color: var(--secondary-bg);
 }
 
@@ -46,6 +45,7 @@ body,
   margin-left: 1rem;
   margin-right: 1rem;
   font-size: 1.5rem;
+  /* user-select: none; */ /* Active for Production */
 }
 
 .quote-input {
@@ -84,4 +84,31 @@ body,
   color: var(--secondary-bg);
   font-size: 1rem;
   font-weight: bold;
+}
+
+.instructions {
+  display: none;
+  margin: 2rem;
+  font-weight: bold;
+}
+
+.score-board {
+  text-align: center;
+  width: 700px;
+  max-width: 90%;
+  margin: 2rem;
+  display: none;
+}
+
+.score-board > h1 {
+  margin: 0 0 1.5rem 0;
+}
+
+table {
+  width: 50%;
+  display: inline-table;
+}
+
+tbody {
+  color: var(--secondary-bg);
 }
